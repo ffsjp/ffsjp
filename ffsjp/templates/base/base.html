@@ -3,9 +3,40 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>{{ base.title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+	<script src="{{ url_for('static', filename='js/jquery-2.1.3.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </head>
 <body>
-	{% block content %} {% endblock %}
+	<div class="main-wrapper">
+		<header>
+			<div class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a href="{{ url_for('index') }}" class="navbar-brand">ffsjp</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							{% for punct in base.menus %}
+							<li{{ punct.active|safe }}><a href="{{ url_for(punct.url) }}">{{ punct.title }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			{% block content %} {% endblock %}
+		</div>
+		<div class="footer-wrapper"></div>
+	</div>
+	<footer>
+		<div class="container">
+			&copy; 2015. Все материалы, размещённые на сайте, находятся в открытом доступе.<br />
+			Следовательно, их использование разрешено в любых целях, не противоречащих законодательству РФ.
+		</div>
+	</footer>
 </body>
 </html>
 
