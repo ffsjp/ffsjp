@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+	<div class='row'>
+		{% if category %}
+		<div class="col-md-9">
+		{% else %}
+		<div class="col-md-12">
+		{% endif %}
+			<h1 class="title">Материалы</h1>
+			{% if this_cat %}
+			<p>Выбрана категория: <strong>{{ this_cat.title }}</strong></p>
+			{% else %}
+			{{ base.content }}
+			{% endif %}
+			<div class="material-list">
+				{% for material in base.data %}
+				<div class="material">
+					<h4>{{ material.title }} (<a href="{{ material.url }}">Скачать</a>)</h4>
+					<p>Категория: <strong><a href="{{ url_for('materials', cat_name = material.cat.name) }}">{{ material.cat.title }}</a></strong></p>
+					<p>{{ material.anons }}</p>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% if category %}
+		<div class="col-md-3 list-menu">
+			<h3>Категории</h3>
+			<ul>
+				{% for cat in category %}
+				<li><a href="{{ url_for('materials', cat_name = cat.name) }}">{{ cat.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}

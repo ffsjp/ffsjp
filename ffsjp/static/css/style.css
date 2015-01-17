@@ -8,6 +8,33 @@ html, body {
 	min-height: 100%;
 }
 
+.list-menu {
+	padding: 15px;
+	background-color: #F4F4F4;
+	border: #BBB solid 1px;
+	border-radius: 10px;
+}
+
+.list-menu h3 {
+	margin-top: 0px;
+}
+
+.list-menu ul {
+	padding-left: 10px;
+}
+
+.list-menu li {
+	list-style-type: none;
+}
+
+.material-list .material {
+	padding: 15px;
+	margin: 10px;
+	background-color: #F4F4F4;
+	border: #BBB solid 1px;
+	border-radius: 10px;
+}
+
 .footer-wrapper {
 	height: 50px;
 }
